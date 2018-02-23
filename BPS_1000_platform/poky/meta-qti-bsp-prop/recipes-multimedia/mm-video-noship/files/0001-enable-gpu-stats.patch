@@ -1,0 +1,20 @@
+diff --git a/Android.mk b/Android.mk
+index 5fdde70..4b4ba09 100644
+--- a/Android.mk
++++ b/Android.mk
+@@ -12,6 +12,7 @@ ifeq ($(call is-board-platform-in-list,msm8610),true)
+     include $(VIDEO_DIR)/ittiam_vidc/venc/Android.mk
+ endif
+ 
++ifneq ($(LINUX_OMX_TEST_ONLY_ENCODE), true)
+ ifeq ($(call is-board-platform-in-list, $(VENUS_TARGET_LIST)),true)
+     include $(VIDEO_DIR)/vidc/firmware-venus/Android.mk
+     include $(VIDEO_DIR)/vidc/vidcfuzz/src/Android.mk
+@@ -19,6 +20,7 @@ ifeq ($(call is-board-platform-in-list, $(VENUS_TARGET_LIST)),true)
+     include $(VIDEO_DIR)/pseudocrypto/Android.mk
+     include $(VIDEO_DIR)/vqzip/Android.mk
+ endif
++endif
+ 
+ ifeq ($(call is-board-platform-in-list, $(HEVC_TARGET_LIST)),true)
+     include $(VIDEO_DIR)/hevc/Android.mk
